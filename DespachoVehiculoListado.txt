@@ -1,0 +1,101 @@
+//Cesar Albornoz González
+//Taller Aplicaciones 
+
+
+import java.util.Scanner; // Importamos la clase Scanner para que lea los datos ingresados en la Consola
+
+
+
+public class VehiculoDatos { // definimos la clase del proyecto y el nombre del proyecto
+
+
+// Metodo main del proyecto
+public static void main(String[] args) { 
+
+
+// Creamos un objeto Scanner para que lea los datos que vamos a ingresar
+Scanner scanner = new Scanner(System.in);
+
+
+// Entrada de datos, leer datos del vehiculo
+System.out.print("Ingrese la marca del vehiculo: "); // usamos Sout para escribir y que se muestre en la salida
+String marca = scanner.nextLine(); // nextLine es un metodo que lee la linea como un String cadena
+
+
+System.out.print("Ingrese el modelo del vehiculo: "); // Se solicita el modelo en consola
+String modelo = scanner.nextLine(); // Leemos el modelo en el String modelo
+
+
+
+System.out.print("Ingrese la cilindrada: "); // Se pide el volumen de la cilindrada
+String cilindrada = scanner.nextLine(); // Se guarda como String para que lea el tipo de dato acorde a lo que se ingresara, una cadena de texto
+
+
+System.out.print("Ingrese el tipo de combustible (Gasolina, Diesel, Electrico, etc): "); // aca se pide ingresar el tipo de combustible
+String tipoCombustible = scanner.nextLine(); // leemos el texto ingresado en consola
+
+
+System.out.print("Ingrese la capacidad en pasajeros (numero entero): "); // para pedir capacidad de pasajeros
+int capacidadPasajeros = Integer.parseInt(scanner.nextLine()); // Convierte el texto leido a un tipo Int para evitar problemas con las operaciones luego
+
+
+// compra y despacho
+System.out.print("Ingrese el total de la compra en pesos (entero): "); // esta linea solicita el total de la compra
+int totalCompra = Integer.parseInt(scanner.nextLine()); // Convertimos el texto a Int
+
+
+System.out.print("Ingrese la distancia al domicilio en kilometros (entero): "); // Solicita distancia.
+int distanciaKm = Integer.parseInt(scanner.nextLine()); // Convertimos el valor ingresado a Int
+
+
+// Operaciones 
+int costoDespacho = 0; // asignamos un valor al atributo para iniciarlo 
+
+
+// condicion 1, compras >= 50.000 y distancia <= 20 km. despacho gratis
+if (totalCompra >= 50000 && distanciaKm <= 20) { // Condicion con && que representa el operador AND, >= mayor o igual que, <= menor o igual que 
+costoDespacho = 0; // Gratis.
+}
+
+// condicion 2, compras entre 25.000 y 49.999 o para compras >=50.000 pero fuera de 20 km = $150 por kilometro
+else if ((totalCompra >= 25000 && totalCompra <= 49999) || (totalCompra >= 50000 && distanciaKm > 20)) { // || es el operador logico OR.
+costoDespacho = 150 * distanciaKm; // Multiplica tarifa por kilometrom por la distancia.
+}
+
+// condicion 3, compras < 25.000 = $300 por km
+else { // Si no se cumplio ninguno de los anteriores
+costoDespacho = 300 * distanciaKm; // Tarifa alta por kilometro
+}
+
+
+// para el calculo del total a pagar ingresamos los valores en la variable totalAPagar
+int totalAPagar = totalCompra + costoDespacho; // Sumar compra y despacho
+
+
+// aqui se mostraran los datos en la salida, el listado de los atributos calculados
+System.out.println(); // linea en blanco para dar espacio
+System.out.println("Listado de Transporte"); // titulo
+System.out.println("La marca que ha ingresado es: " + marca); // utilizamos el + para concatenar el texto entre comillas y el atributo marca
+System.out.println("El modelo que ha ingresado es: " + modelo); // nuevamente realizamos lo mismo con los siguientes atributos del listado
+System.out.println("La cilindrada que ha ingresado es: " + cilindrada); 
+System.out.println("El tipo de combustible es: " + tipoCombustible); 
+System.out.println("Tiene una capacidad de " + capacidadPasajeros + " pasajeros."); // concatenamos texto, el atributo capacidadPasajeros, texto 
+
+System.out.println();
+System.out.println("Resumen/Totales"); //Comenzamos a mostrar los valores totales llamando a las variables
+System.out.println("Total de la compra: $" + totalCompra); // Monto de compra
+System.out.println("Distancia: " + distanciaKm + " km"); // Distancia en km
+System.out.println("Costo de despacho: $" + costoDespacho); // Coste calculado
+System.out.println("Total a pagar: $" + totalAPagar); // Final total
+
+// Escribimos un mensaje segun la condicion que resulto
+if (totalCompra >= 50000 && distanciaKm <= 20) { // Se indica que es gratis
+System.out.println("Aplica el despacho gratis por compra mayor o igual que $50.000 dentro de 20 km");
+} else if ((totalCompra >= 25000 && totalCompra <= 49999) || (totalCompra >= 50000 && distanciaKm > 20)) { // Tarifa media, else (sino)
+System.out.println("Se aplico una tarifa de $150 por km"); // Escribir
+} else { // Tarifa alta
+System.out.println("Se aplico la tarifa de $300 por km"); // Escribir 
+}
+
+
+} // Fin del metodo main
