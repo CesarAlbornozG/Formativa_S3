@@ -6,7 +6,7 @@ import java.util.Scanner; // Importamos la clase Scanner para que lea los datos 
 
 
 
-public class VehiculoDatos { // definimos la clase del proyecto y el nombre del proyecto
+public class DespachoVehiculoListado { // definimos la clase del proyecto y el nombre del proyecto
 
 
 // Metodo main del proyecto
@@ -98,4 +98,7 @@ System.out.println("Se aplico la tarifa de $300 por km"); // Escribir
 }
 
 
+
 } // Fin del metodo main
+
+} // fin de la clase vehiculodatos
